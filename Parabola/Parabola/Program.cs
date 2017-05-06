@@ -31,8 +31,9 @@ namespace Parabola
 
         public static string Calculate(string[] args)
         {
-            throw new NotImplementedException();
-            /*CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+            // throw new NotImplementedException();
+
+            CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
             customCulture.NumberFormat.NumberNegativePattern = 1;
             customCulture.NumberFormat.NumberGroupSeparator = "";
@@ -91,7 +92,7 @@ namespace Parabola
                         break;
                     }
             }
-            return output;*/
+            return output;
         }
 
         private static string ComputeRoots(double a, double b, double c)
