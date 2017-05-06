@@ -28,5 +28,10 @@ namespace Parabola
             Console.WriteLine("Naciśnij dowolny klawisz aby zakończyć...");
             Console.ReadKey();
         }
+
+        private static bool Calculate(string[] args)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
