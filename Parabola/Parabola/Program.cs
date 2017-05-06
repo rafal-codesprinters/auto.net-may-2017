@@ -31,11 +31,11 @@ namespace Parabola
 
         public static string Calculate(string[] args)
         {
-            CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+            /*CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
             customCulture.NumberFormat.NumberNegativePattern = 1;
             customCulture.NumberFormat.NumberGroupSeparator = "";
-            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;*/
 
             string output = String.Empty;
             switch (args.Length)
