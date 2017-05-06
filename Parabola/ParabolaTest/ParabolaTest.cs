@@ -2,16 +2,17 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Diagnostics;
+using Parabola;
 
-namespace ParabolaTest
+namespace Parabola
 {
     [TestClass]
     public class ParabolaTest
     {
-        string a;
-        string b;
-        string c;
-        string PromptWcisnijKlawisz = Environment.NewLine + "Naciśnij dowolny klawisz aby zakończyć...";
+        string a = String.Empty;
+        string b = String.Empty;
+        string c = String.Empty;
+        string d = String.Empty;
 
         // ----------------------------------- POSITIVE SCENARIOS -----------------------------------
 
@@ -21,9 +22,9 @@ namespace ParabolaTest
             a = "1";
             b = "2";
             c = "3";
-            string OczekiwanyWynik = "Brak miejsc zerowych." + PromptWcisnijKlawisz;
+            string OczekiwanyWynik = "Brak miejsc zerowych.";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -34,9 +35,9 @@ namespace ParabolaTest
             a = "2";
             b = "-4";
             c = "2";
-            string OczekiwanyWynik = "Jedno miejsce zerowe: x0 = 1" + PromptWcisnijKlawisz;
+            string OczekiwanyWynik = "Jedno miejsce zerowe: x0 = 1";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -47,9 +48,9 @@ namespace ParabolaTest
             a = "-1";
             b = "3";
             c = "4";
-            string OczekiwanyWynik = "Dwa miejsca zerowe: x1 = 4, x2 = -1" + PromptWcisnijKlawisz;
+            string OczekiwanyWynik = "Dwa miejsca zerowe: x1 = 4, x2 = -1";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -60,9 +61,9 @@ namespace ParabolaTest
             a = "0";
             b = "0";
             c = "5";
-            string OczekiwanyWynik = "Brak miejsc zerowych." + PromptWcisnijKlawisz;
+            string OczekiwanyWynik = "Brak miejsc zerowych.";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -73,9 +74,9 @@ namespace ParabolaTest
             a = "0";
             b = "2";
             c = "0";
-            string OczekiwanyWynik = "Jedno miejsce zerowe: x0 = 0" + PromptWcisnijKlawisz;
+            string OczekiwanyWynik = "Jedno miejsce zerowe: x0 = 0";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -86,9 +87,9 @@ namespace ParabolaTest
             a = "-5";
             b = "0";
             c = "0";
-            string OczekiwanyWynik = "Jedno miejsce zerowe: x0 = 0" + PromptWcisnijKlawisz;
+            string OczekiwanyWynik = "Jedno miejsce zerowe: x0 = 0";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -99,9 +100,9 @@ namespace ParabolaTest
             a = "0";
             b = "0";
             c = "0";
-            string OczekiwanyWynik = "Nieskończenie wiele miejsc zerowych." + PromptWcisnijKlawisz;
+            string OczekiwanyWynik = "Nieskończenie wiele miejsc zerowych.";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -114,9 +115,9 @@ namespace ParabolaTest
             a = "A";
             b = "1";
             c = "15";
-            string OczekiwanyWynik = "Niepoprawna wartość współczynnika 'a' funkcji." + PromptWcisnijKlawisz;
+            string OczekiwanyWynik = "Niepoprawna wartość współczynnika 'a' funkcji.";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -127,9 +128,9 @@ namespace ParabolaTest
             a = "7";
             b = "B";
             c = "15";
-            string OczekiwanyWynik = "Niepoprawna wartość współczynnika 'b' funkcji." + PromptWcisnijKlawisz;
+            string OczekiwanyWynik = "Niepoprawna wartość współczynnika 'b' funkcji.";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -140,9 +141,9 @@ namespace ParabolaTest
             a = "3";
             b = "1";
             c = "C";
-            string OczekiwanyWynik = "Niepoprawna wartość współczynnika 'c' funkcji." + PromptWcisnijKlawisz;
+            string OczekiwanyWynik = "Niepoprawna wartość współczynnika 'c' funkcji.";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -152,10 +153,10 @@ namespace ParabolaTest
         {
             a = "3";
             b = "1";
-            c = "";
-            string OczekiwanyWynik = "Podano 2 zamiast 3 współczynników." + PromptWcisnijKlawisz;
+            c = String.Empty;
+            string OczekiwanyWynik = "Podano 2 zamiast 3 współczynników.";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -164,11 +165,11 @@ namespace ParabolaTest
         public void BrakDwochWspolczynnikow()
         {
             a = "3";
-            b = "";
-            c = "";
-            string OczekiwanyWynik = "Podano 1 zamiast 3 współczynników." + PromptWcisnijKlawisz;
+            b = String.Empty;
+            c = String.Empty;
+            string OczekiwanyWynik = "Podano 1 zamiast 3 współczynników.";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -176,12 +177,12 @@ namespace ParabolaTest
         [TestMethod]
         public void BrakWspolczynnikow()
         {
-            a = "";
-            b = "";
-            c = "";
-            string OczekiwanyWynik = "Nie podano żadnych współczynników." + PromptWcisnijKlawisz;
+            a = String.Empty;
+            b = String.Empty;
+            c = String.Empty;
+            string OczekiwanyWynik = "Nie podano żadnych współczynników.";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -192,10 +193,11 @@ namespace ParabolaTest
         {
             a = "1";
             b = "2";
-            c = "3 4";
-            string OczekiwanyWynik = "Podano więcej niż 3 współczynniki." + PromptWcisnijKlawisz;
+            c = "3";
+            d = "7";
+            string OczekiwanyWynik = "Podano więcej niż 3 współczynniki.";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -208,9 +210,9 @@ namespace ParabolaTest
             a = "-1.08";
             b = "77.25";
             c = "-11.5";
-            string OczekiwanyWynik = "Dwa miejsca zerowe: x1 = 71.38, x2 = 0.15" + PromptWcisnijKlawisz;
+            string OczekiwanyWynik = "Dwa miejsca zerowe: x1 = 71.38, x2 = 0.15";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -221,9 +223,9 @@ namespace ParabolaTest
             a = "-1.15";
             b = "-3.35";
             c = "99.7";
-            string OczekiwanyWynik = "Dwa miejsca zerowe: x1 = 7.97, x2 = -10.88" + PromptWcisnijKlawisz;
+            string OczekiwanyWynik = "Dwa miejsca zerowe: x1 = 7.97, x2 = -10.88";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -234,9 +236,9 @@ namespace ParabolaTest
             a = "0";
             b = "1";
             c = "2";
-            string OczekiwanyWynik = "Jedno miejsce zerowe: x0 = -2" + PromptWcisnijKlawisz;
+            string OczekiwanyWynik = "Jedno miejsce zerowe: x0 = -2";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -247,9 +249,9 @@ namespace ParabolaTest
             a = "-11";
             b = "0";
             c = "2";
-            string OczekiwanyWynik = "Dwa miejsca zerowe: x1 = 0.43, x2 = -0.43" + PromptWcisnijKlawisz;
+            string OczekiwanyWynik = "Dwa miejsca zerowe: x1 = 0.43, x2 = -0.43";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -260,9 +262,9 @@ namespace ParabolaTest
             a = "4";
             b = "1";
             c = "0";
-            string OczekiwanyWynik = "Dwa miejsca zerowe: x1 = -0.25, x2 = 0" + PromptWcisnijKlawisz;
+            string OczekiwanyWynik = "Dwa miejsca zerowe: x1 = -0.25, x2 = 0";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -273,9 +275,9 @@ namespace ParabolaTest
             a = "-20,3";
             b = "1.1";
             c = "15";
-            string OczekiwanyWynik = "Niepoprawna wartość współczynnika 'a' funkcji." + PromptWcisnijKlawisz;
+            string OczekiwanyWynik = "Niepoprawna wartość współczynnika 'a' funkcji.";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -286,9 +288,9 @@ namespace ParabolaTest
             a = "7.2";
             b = "1,33";
             c = "15";
-            string OczekiwanyWynik = "Niepoprawna wartość współczynnika 'b' funkcji." + PromptWcisnijKlawisz;
+            string OczekiwanyWynik = "Niepoprawna wartość współczynnika 'b' funkcji.";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
@@ -299,43 +301,39 @@ namespace ParabolaTest
             a = "0.3";
             b = "1";
             c = "15,34";
-            string OczekiwanyWynik = "Niepoprawna wartość współczynnika 'c' funkcji." + PromptWcisnijKlawisz;
+            string OczekiwanyWynik = "Niepoprawna wartość współczynnika 'c' funkcji.";
 
-            string OtrzymanyWynik = Oblicz(a, b, c);
+            string OtrzymanyWynik = Oblicz();
 
             Assert.AreEqual(OczekiwanyWynik, OtrzymanyWynik);
         }
 
         // ------------------------------------- HELPING METHOD -------------------------------------
 
-        private string Oblicz(string a, string b, string c)
+        private string Oblicz()
         {
-            Process aplikacja = new Process();
-            aplikacja.StartInfo.FileName = AppDomain.CurrentDomain.BaseDirectory + "\\Executable.exe";
-            aplikacja.StartInfo.Arguments = (a + " " + b + " " + c).Trim();
-            aplikacja.StartInfo.RedirectStandardInput = true;
-            aplikacja.StartInfo.RedirectStandardOutput = true;
-            aplikacja.StartInfo.UseShellExecute = false;
-            aplikacja.StartInfo.CreateNoWindow = false;
-
-            aplikacja.Start();
-            StreamReader reader = aplikacja.StandardOutput;
-            StreamWriter writer = aplikacja.StandardInput;
-
-            writer.WriteLine("q");
-            string LogKonsoli = reader.ReadToEnd().Trim();
-
-            aplikacja.WaitForExit(5000);
-            try
+            string[] args = new string[] { };
+            if (a != String.Empty)
             {
-                aplikacja.Kill();
+                Array.Resize(ref args, args.Length + 1);
+                args[args.Length - 1] = a;
             }
-            catch
+            if (b != String.Empty)
             {
-                //
+                Array.Resize(ref args, args.Length + 1);
+                args[args.Length - 1] = b;
             }
-
-            return LogKonsoli;
+            if (c != String.Empty)
+            {
+                Array.Resize(ref args, args.Length + 1);
+                args[args.Length - 1] = c;
+            }
+            if (d != String.Empty)
+            {
+                Array.Resize(ref args, args.Length + 1);
+                args[args.Length - 1] = d;
+            }
+            return Program.Calculate(args);
         }
     }
 }

@@ -3,9 +3,33 @@ using System.Globalization;
 
 namespace Parabola
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
+        {
+
+            if (args.Length == 0)
+            {
+                Console.Write("Podaj wartość współczynnika: a = ");
+                string a = Console.ReadLine();
+
+                Console.Write("Podaj wartość współczynnika: b = ");
+                string b = Console.ReadLine();
+
+                Console.Write("Podaj wartość współczynnika: c = ");
+                string c = Console.ReadLine();
+
+                Console.WriteLine(Calculate(new string[] {a, b, c}));
+            }
+            else
+            {
+                Console.WriteLine(Calculate(args));
+            }
+            Console.WriteLine("Naciśnij dowolny klawisz aby zakończyć...");
+            Console.ReadKey();
+        }
+
+        public static string Calculate(string[] args)
         {
             CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -13,21 +37,22 @@ namespace Parabola
             customCulture.NumberFormat.NumberGroupSeparator = "";
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
 
+            string output = String.Empty;
             switch (args.Length)
             {
                 case 0:
                     {
-                        Console.WriteLine("Nie podano żadnych współczynników.");
+                        output = "Nie podano żadnych współczynników.";
                         break;
                     }
                 case 1:
                     {
-                        Console.WriteLine("Podano 1 zamiast 3 współczynników.");
+                        output = "Podano 1 zamiast 3 współczynników.";
                         break;
                     }
                 case 2:
                     {
-                        Console.WriteLine("Podano 2 zamiast 3 współczynników.");
+                        output = "Podano 2 zamiast 3 współczynników.";
                         break;
                     }
                 case 3:
@@ -41,51 +66,50 @@ namespace Parabola
                                 try
                                 {
                                     double c = Convert.ToDouble(args[2]);
-                                    Console.WriteLine(Calculate(a, b, c));
+                                    output = ComputeRoots(a, b, c);
                                 }
                                 catch (FormatException)
                                 {
-                                    Console.WriteLine("Niepoprawna wartość współczynnika 'c' funkcji.");
+                                    output = "Niepoprawna wartość współczynnika 'c' funkcji.";
                                 }
                             }
                             catch (FormatException)
                             {
-                                Console.WriteLine("Niepoprawna wartość współczynnika 'b' funkcji.");
+                                output = "Niepoprawna wartość współczynnika 'b' funkcji.";
                             }
                         }
                         catch (FormatException)
                         {
-                            Console.WriteLine("Niepoprawna wartość współczynnika 'a' funkcji.");
+                            output = "Niepoprawna wartość współczynnika 'a' funkcji.";
                         }
                         break;
                     }
                 default:
                     {
-                        Console.WriteLine("Podano więcej niż 3 współczynniki.");
+                        output = "Podano więcej niż 3 współczynniki.";
                         break;
                     }
             }
-            Console.WriteLine("Naciśnij dowolny klawisz aby zakończyć...");
-            Console.ReadKey();
+            return output;
         }
 
-        private static string Calculate(double a, double b, double c)
+        private static string ComputeRoots(double a, double b, double c)
         {
-            String result = "";
+            String roots = String.Empty;
             if (a != 0)
             {
                 Double delta = (b * b) - (4 * a * c);
                 if (delta < 0)
                 {
-                    result = "Brak miejsc zerowych.";
+                    roots = "Brak miejsc zerowych.";
                 }
                 if (delta == 0)
                 {
-                    result = "Jedno miejsce zerowe: x0 = " + Convert.ToString(Math.Round(-1 * b / (2 * a), 2));
+                    roots = "Jedno miejsce zerowe: x0 = " + Convert.ToString(Math.Round(-1 * b / (2 * a), 2));
                 }
                 if (delta > 0)
                 {
-                    result = "Dwa miejsca zerowe: x1 = " + Convert.ToString(Math.Round((-1 * b - Math.Sqrt(delta)) / (2 * a), 2))
+                    roots = "Dwa miejsca zerowe: x1 = " + Convert.ToString(Math.Round((-1 * b - Math.Sqrt(delta)) / (2 * a), 2))
                         + ", x2 = " + Convert.ToString(Math.Round((-1 * b + Math.Sqrt(delta)) / (2 * a), 2));
                 }
             }
@@ -93,21 +117,21 @@ namespace Parabola
             {
                 if (b != 0)
                 {
-                    result = "Jedno miejsce zerowe: x0 = " + Convert.ToString(Math.Round(-1 * c / b, 2));
+                    roots = "Jedno miejsce zerowe: x0 = " + Convert.ToString(Math.Round(-1 * c / b, 2));
                 }
                 else
                 {
                     if (c != 0)
                     {
-                        result = "Brak miejsc zerowych.";
+                        roots = "Brak miejsc zerowych.";
                     }
                     else
                     {
-                        result = "Nieskończenie wiele miejsc zerowych.";
+                        roots = "Nieskończenie wiele miejsc zerowych.";
                     }
                 }
             }
-            return result;
+            return roots;
         }
     }
 }
