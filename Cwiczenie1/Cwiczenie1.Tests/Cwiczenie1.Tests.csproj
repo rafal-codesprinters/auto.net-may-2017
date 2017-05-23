@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalcTestsRefactored.cs" />
     <Compile Include="CalcTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
