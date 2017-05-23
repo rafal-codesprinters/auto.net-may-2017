@@ -7,7 +7,6 @@ namespace Parabola
     {
         public static void Main(string[] args)
         {
-
             if (args.Length == 0)
             {
                 Console.Write("Podaj wartość współczynnika: a = ");
@@ -31,14 +30,19 @@ namespace Parabola
 
         public static string Calculate(string[] args)
         {
-            // throw new NotImplementedException();
-
-            CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+             //throw new NotImplementedException();
+            
+            CultureInfo customCulture = (CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
             customCulture.NumberFormat.NumberNegativePattern = 1;
             customCulture.NumberFormat.NumberGroupSeparator = "";
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
 
+
+            //-1
+            //- 1
+            //1-
+            //1 -
             string output = String.Empty;
             switch (args.Length)
             {
@@ -61,6 +65,12 @@ namespace Parabola
                     {
                         try
                         {
+//                            double result;
+//                            if (double.TryParse("12", out result))
+//                            {
+//                                output = "niepoprawna....";
+//                            }
+
                             double a = Convert.ToDouble(args[0]);
                             try
                             {
@@ -93,6 +103,8 @@ namespace Parabola
                     }
             }
             return output;
+
+            throw new NotImplementedException();
         }
 
         private static string ComputeRoots(double a, double b, double c)
