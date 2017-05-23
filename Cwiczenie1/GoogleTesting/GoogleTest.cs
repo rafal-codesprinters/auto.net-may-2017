@@ -20,7 +20,7 @@ namespace GoogleTesting
         }
 
         [Fact]
-        public void Hello_test()
+        public void Find_Searchbox_By_Id()
         {
             _driver.Navigate().GoToUrl("http://www.google.com");
             _driver.FindElementById("lst-ib").SendKeys("code sprinters");
@@ -31,6 +31,40 @@ namespace GoogleTesting
             Assert.Equal("Code Sprinters -", result.Text);
         }
 
+        [Fact]
+        public void Find_Searchbox_By_XPath()
+        {
+            _driver.Navigate().GoToUrl("http://www.google.com");
+            _driver.FindElementByXPath("//input[@name='q']").SendKeys("code sprinters");
+            _driver.FindElementByXPath("//button[@name='btnG']").Click();
+            var result = _driver.FindElementByXPath(@"//div/*/a[@href='http://agileszkolenia.pl/']");
 
+            Assert.NotNull(result);
+            Assert.Equal("Code Sprinters -", result.Text);
+        }
+
+        [Fact]
+        public void Find_Searchbox_By_ClassName()
+        {
+            _driver.Navigate().GoToUrl("http://www.google.com");
+            _driver.FindElementByClassName("gsfi").SendKeys("code sprinters");
+            _driver.FindElementByClassName("sbico-c").Click();
+            var result = _driver.FindElementByXPath(@"//div/*/a[@href='http://agileszkolenia.pl/']");
+
+            Assert.NotNull(result);
+            Assert.Equal("Code Sprinters -", result.Text);
+        }
+
+        [Fact]
+        public void Find_Searchbox_By_CssSelector()
+        {
+            _driver.Navigate().GoToUrl("http://www.google.com");
+            _driver.FindElementByCssSelector(".gsfi").SendKeys("code sprinters");
+            _driver.FindElementByCssSelector(".sbico").Click();
+            var result = _driver.FindElementByXPath(@"//div/*/a[@href='http://agileszkolenia.pl/']");
+
+            Assert.NotNull(result);
+            Assert.Equal("Code Sprinters -", result.Text);
+        }
     }
 }
