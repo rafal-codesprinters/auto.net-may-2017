@@ -11,9 +11,7 @@ namespace GoogleTesting
         public GoogleTest()
         {
             _driver = new ChromeDriver();
-            _driver.Manage()
-                .Timeouts()
-                .ImplicitlyWait(TimeSpan.FromSeconds(5));
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
         }
 
         public void Dispose()
