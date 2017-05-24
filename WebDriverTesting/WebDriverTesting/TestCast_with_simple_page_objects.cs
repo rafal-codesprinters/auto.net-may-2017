@@ -6,12 +6,12 @@ using Xunit;
 
 namespace WebDriverTesting
 {
-    public class TestCaseV2 : IDisposable
+    public class TestCast_with_simple_page_objects : IDisposable
     {
         private readonly string _exampleTitle ;
         private static string ExampleContent => @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi scelerisque diam ac lacinia placerat. Nullam congue blandit dolor, a placerat urna sodales quis. Aliquam molestie quis ipsum sed tempor. Nam interdum dolor lorem, in accumsan sem dictum a. Aenean non sem sed est sodales lobortis in at risus. Aenean eget feugiat dui. Phasellus suscipit finibus purus, eu lacinia nibh facilisis eget. Vivamus a consectetur nisl. Praesent malesuada id massa quis ultrices. Quisque et dolor dictum, lacinia leo vitae, hendrerit odio. Sed neque felis, fermentum sit amet risus vitae, scelerisque pretium dolor. Duis elementum tellus a ante efficitur gravida. Morbi posuere dolor vel nisi commodo, in mollis erat fermentum. Morbi neque lectus, rhoncus ac vulputate in, malesuada vel libero. Suspendisse facilisis tempor nisi sed varius. Fusce aliquam dui sit amet arcu vestibulum, et tincidunt lorem dapibus. Nullam non erat mollis, dictum libero a, sagittis eros. Aenean pellentesque facilisis neque accumsan vulputate. Donec imperdiet, mi eget pharetra lacinia, mauris neque sodales eros, in auctor neque nunc in risus. Donec pulvinar pharetra rhoncus. Nulla tempus nibh eget lorem viverra, quis auctor ante sagittis. Ut lobortis dapibus orci, sit amet porttitor est mattis at. Vestibulum euismod dolor odio, nec ultricies erat faucibus sed. Nulla hendrerit mauris ac nisl mattis, in tristique ipsum semper. Nam ante nibh, dignissim at lorem eu, imperdiet imperdiet velit. Praesent at efficitur libero, ut rutrum leo.";
 
-        public TestCaseV2()
+        public TestCast_with_simple_page_objects()
         {
             _exampleTitle = Guid.NewGuid().ToString();
         }
@@ -19,6 +19,7 @@ namespace WebDriverTesting
         [Fact]
         public void When_administrator_publish_new_note_unregistered_user_can_view_that_note_on_a_blog()
         {
+            
             Administrator.GoTo();
             Administrator.Login(Credentials.Valid);
             var url = Administrator.CreateNewPost(_exampleTitle, ExampleContent);
@@ -46,7 +47,7 @@ namespace WebDriverTesting
                 .Timeouts()
                 .ImplicitWait = TimeSpan.FromSeconds(5);
         }
-        private static readonly ChromeDriver Driver;
+        public static  ChromeDriver Driver;
 
         internal static ChromeDriver Get()
         {
@@ -56,13 +57,13 @@ namespace WebDriverTesting
 
     internal class Credentials
     {
-        public static WpCredentials Valid => new WpCredentials
+        public static WpCredentials Valid = new WpCredentials
         {
             UserName = "autotestdotnet@gmail.com",
             Password = "codesprinters2016"
         };
 
-        public static WpCredentials InValid => new WpCredentials
+        public static WpCredentials InValid = new WpCredentials
         {
             UserName = "sdfhskflhauieayor",
             Password = "jcn,zmcjkshdiuyioerwurwoczh"

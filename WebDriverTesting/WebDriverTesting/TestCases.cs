@@ -30,7 +30,7 @@ namespace WebDriverTesting
             Assert.Equal("Vivamus aliquam feugiat", firstNoteTitle);
         }
 
-        [Fact(Skip ="it is already done") ]
+        [Fact]
         public void When_administrator_publish_new_note_unregistered_user_can_view_that_note_on_a_blog()
         {
             _driver.Navigate().GoToUrl("https://autotestdotnet.wordpress.com/wp-admin");
