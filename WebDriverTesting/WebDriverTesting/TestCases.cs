@@ -11,12 +11,9 @@ namespace WebDriverTesting
         public TestCases()
         {
             _driver = new ChromeDriver();
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-        }
-
-        public void Dispose()
-        {
-            _driver.Quit();
+            _driver.Manage()
+                .Timeouts()
+                .ImplicitWait = TimeSpan.FromSeconds(5);
         }
 
         [Fact]
@@ -25,5 +22,9 @@ namespace WebDriverTesting
             Assert.Equal(true, false);
         }
 
+        public void Dispose()
+        {
+            _driver.Quit();
+        }
     }
 }
