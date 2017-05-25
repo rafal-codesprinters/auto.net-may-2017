@@ -10,7 +10,7 @@ namespace WebDriverTesting
     {
         static WebBrowser()
         {
-            Driver = new FirefoxDriver();
+            Driver = new ChromeDriver();
             Driver.Manage()
                 .Window
                 .Size = new System.Drawing.Size(Configuration.BrowserWidth, 
