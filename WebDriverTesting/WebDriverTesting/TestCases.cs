@@ -40,7 +40,7 @@ namespace WebDriverTesting
 
             var pass = _driver.FindElementById("user_pass");
             pass.Click();
-            pass.SendKeys("codesprinters2016");
+            pass.SendKeys("codesprinters2017");
 
             _driver.FindElementById("wp-submit").Click();
 

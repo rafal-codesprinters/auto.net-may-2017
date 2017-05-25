@@ -60,7 +60,7 @@ namespace WebDriverTesting
         public static WpCredentials Valid = new WpCredentials
         {
             UserName = "autotestdotnet@gmail.com",
-            Password = "codesprinters2016"
+            Password = "codesprinters2017"
         };
 
         public static WpCredentials InValid = new WpCredentials
