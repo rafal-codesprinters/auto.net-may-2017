@@ -62,9 +62,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestCases.cs" />
+    <Compile Include="BlogPostTests.cs" />
+    <Compile Include="Comment.cs" />
+    <Compile Include="MainPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestCast_with_simple_page_objects.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
