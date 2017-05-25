@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Remote;
 
 namespace WebDriverTesting
 {
@@ -9,8 +10,7 @@ namespace WebDriverTesting
     {
         static WebBrowser()
         {
-            Driver = new FirefoxDriver();
-            //Driver = new ChromeDriver();
+            Driver = new ChromeDriver();
             Driver.Manage()
                 .Window
                 .Size = new System.Drawing.Size(Configuration.BrowserWidth, 
